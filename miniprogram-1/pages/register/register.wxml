@@ -1,0 +1,28 @@
+<!--pages/register/register.wxml-->
+<view class="root" wx:if="{{userInfo && userInfo.nickName}}">
+    <view >
+        <image class="touxiang" src="{{userInfo.avatarUrl}}"></image>
+        <view class="name">{{userInfo.nickName}}</view>
+        <button bind:tap="tuichu">退出登录</button>
+    </view>
+    
+</view>
+<button wx:else bind:tap="goLogin">去登录</button>
+
+<!-- 弹窗 -->
+<view class="pop_root" hidden="{{isHidden}}">
+<view class="pop_content">
+<view class="pop_tip">乐檬音乐平台   申请</view>
+<button class="pop_avatar" open-type="chooseAvatar" bindchooseavatar="getAvatar">
+    <image class="pop_img" wx:if="{{avatarUrl}}" src="{{avatarUrl}}"/>
+    <view wx:else>获取头像</view>
+</button>
+<input class="pop_name" type="nickname" bindinput="getName" placeholder="获取昵称" value="{{nickName}}"/>
+<view class="pop_bot">
+    <view class="btn" bind:tap="potNo">取消</view>
+    <view class="btn log_btn" bind:tap="popYes">确定</view>
+</view>
+</view>
+
+
+</view>

@@ -1,0 +1,3 @@
+<!--pages/home/home.wxml-->
+<view>排练室</view>
+<van-button type="primary">按钮</van-button>

@@ -1,0 +1,41 @@
+<view class="auth-modal">
+  <!-- 应用信息 -->
+  <view class="header-wrapper">
+    <view class="auth-header">
+        <!-- 此处待填充乐萌logo -->
+      <image class="auth-logo" src="/images/default-logo.png"></image>
+      <view class="auth-title">
+        <text class="app-name">乐萌音乐平台</text>
+        <text class="app-desc">申请</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 授权说明 -->
+  <view class="desc-wrapper">
+    <text class="auth-desc">获取你的昵称、头像、地区及性别</text>
+  </view>
+
+  <!-- 分割线 + 用户信息 -->
+  <view class="divider-top"></view>
+  <view class="user-card" wx:if="{{userInfo}}">
+    <image class="user-avatar" src="{{userInfo.avatarUrl}}"></image>
+    <view class="user-info">
+      <text class="user-nickname">{{userInfo.nickName}}</text>
+      <text class="user-subtitle">微信个人信息</text>
+    </view>
+  </view>
+  <view class="divider-bottom"></view>
+
+  <!-- 按钮组 -->
+  <view class="btn-wrapper">
+    <view class="btn-group">
+      <button class="btn cancel" bindtap="onCancel">取消</button>
+      <button 
+        class="btn confirm" 
+        open-type="getUserInfo" 
+        bindgetuserinfo="onGetUserInfo"
+      >确定</button>
+    </view>
+  </view>
+</view>

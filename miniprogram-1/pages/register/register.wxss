@@ -1,0 +1,90 @@
+/* pages/register/register.wxss */
+.root{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.touxiang{
+    width: 300rpx;
+    height: 300rpx;
+    border-radius: 50%;
+    /* margin-left: 100rpx; */
+    margin-top: 30rpx;
+}
+.name{
+    font-size: 36rpx;
+    margin: 20rpx 0;
+    text-align: center;
+}
+
+/* 弹窗区域 */
+.pop_root{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgb(0,0,0,0.6);
+    z-index: 1000;
+}
+.pop_content{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30rpx 30rpx 0 0;
+}
+
+.pop_tip{
+    font-size: 30rpx;
+    margin-top: 30rpx;
+}
+.pop_avatar{
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 50%;
+    background: gainsboro;
+    font-size: 35rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30rpx;
+    padding: 0;
+}
+
+.pop_img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.pop_name{
+    width: 300rpx;
+    border: 1px solid gray;
+    border-radius: 25rpx;
+    padding-left: 150rpx;
+    margin-bottom: 50rpx;
+}
+
+.pop_bot{
+    display: flex;
+    margin-bottom: 50rpx;
+}
+
+.btn{
+    width: 150rpx;
+    border: 1px solid gray;
+    border-radius: 20rpx;
+    text-align: center;
+    color: gray;
+}
+.log_btn{
+    background: green;
+    color: white;
+    margin-left: 90rpx;
+}

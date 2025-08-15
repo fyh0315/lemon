@@ -1,0 +1,5 @@
+<!--pages/welcome/welcome.wxml-->
+<view class="welcome">
+    <!-- 开屏欢迎界面 -->
+    <image src="/data/test.png" mode="widthFix"></image>
+</view>
