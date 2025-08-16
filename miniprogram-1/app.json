@@ -10,9 +10,9 @@
   ],
   "window": {
     "backgroundTextStyle":"dark",
-    "navigationBarTextStyle": "white",
+    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "乐萌",
-    "navigationBarBackgroundColor": "#2b4b6b",
+    "navigationBarBackgroundColor": "#efefef",
     "backgroundColor": "#efefef"
   },
 
