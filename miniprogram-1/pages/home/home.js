@@ -1,66 +1,18 @@
-// pages/home/home.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
-})
+    data: {
+      // 排练时长数据
+      practiceTime: '49 小时',
+      practiceSub: '较上月提升5h',
+      practiceDesc: '“于是，辣个无敌的吉他手诞生了……”',
+      // 优惠金额数据
+      discountAmount: '130 ￥',
+      discountSub: '较上月提升30￥',
+      discountDesc: '“难道你真的是省钱的天才？”'
+    },
+  
+    onLoad() {
+      // 页面加载时添加网络请求或数据初始化逻辑
+      // 动态获取数据，在此处调用接口更新 data
+      // wx.request({ ... })
+    }
+  })

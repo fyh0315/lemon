@@ -1,5 +1,5 @@
 <!--pages/welcome/welcome.wxml-->
 <view class="welcome">
     <!-- 开屏欢迎界面 -->
-    <image src="/data/lemonpct.jpg" mode="widthFix"></image>
+    <image src="/images/lemonpct.jpg" mode="widthFix"></image>
 </view>

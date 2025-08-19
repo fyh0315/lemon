@@ -71,7 +71,7 @@ Page({
   
           // 3. 提示并跳转首页
             wx.showToast({ title: '登录成功' });
-            wx.redirectTo({
+            wx.switchTab({
             url: '/pages/home/home'
             });
             } else {
@@ -87,7 +87,12 @@ Page({
      * 用户点击「取消」
      */
     onCancel() {
-        wx.exitMiniProgram();
+        wx.switchTab({
+            url: '/pages/home/home'
+            });
+
+
+        ///wx.exitMiniProgram();
         // 退出小程序
     }
   });
