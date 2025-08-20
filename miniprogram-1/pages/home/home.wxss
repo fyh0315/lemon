@@ -84,6 +84,14 @@ page {
   padding: 16px;
   margin-bottom: 16px;
   width: 287px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.stats-right{
+    /* 防止压缩空间 */
+    flex-shrink: 0;
 }
 
 .stats-title {
@@ -93,11 +101,13 @@ page {
   display: block;
 }
 .stats-value {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
   color: #333;
   margin-bottom: 8px;
   display: block;
+  /* 强制不换行 */
+  white-space: nowrap;
 }
 .stats-sub {
   font-size: 14px;

@@ -1,10 +1,10 @@
 <view class="container">
   <!-- 顶部标题 -->
   <view class="header">
-  <view class="header-line"></view>
-  <text class="header-title">乐萌</text>
-  <view class="header-line"></view>
-    </view>
+    <view class="header-line"></view>
+    <text class="header-title">乐萌</text>
+    <view class="header-line"></view>
+  </view>
 
   <!-- 功能按钮区 -->
   <view class="button-group">
@@ -20,31 +20,31 @@
     </view>
   </view>
 
-
-<!-- 排练时长统计 -->
-<view class="stats-card">
-  <!-- 左侧文本区域 -->
-  <view class="stats-left">
-    <view class="stats-title">本月排练时长</view>
-    <view class="stats-sub">{{practiceSub}}</view>
-    <view class="stats-desc">{{practiceDesc}}</view>
+  <!-- 排练时长统计 -->
+  <view class="stats-card">
+    <!-- 左侧文本区域 -->
+    <view class="stats-left">
+      <view class="stats-title">本月排练时长</view>
+      <view class="stats-sub">{{practiceSub}}</view>
+      <view class="stats-desc">{{practiceDesc}}</view>
+    </view>
+    <!-- 右侧数值区域 -->
+    <view class="stats-right">
+      <view class="stats-value">{{practiceTime}}</view>
+    </view>
   </view>
-  <!-- 右侧数值区域 -->
-  <view class="stats-right">
-    <view class="stats-value">{{practiceTime}}</view>
-  </view>
-</view>
 
   <!-- 优惠金额统计 -->
   <view class="stats-card">
-  <!-- 左侧文本区域 -->
-  <view class="stats-left">
-    <view class="stats-title">本月优惠总金额</view>
-    <view class="stats-sub">{{discountSub}}</view>
-    <view class="stats-desc">{{discountDesc}}</view>
+    <!-- 左侧文本区域 -->
+    <view class="stats-left">
+      <view class="stats-title">本月优惠总金额</view>
+      <view class="stats-sub">{{discountSub}}</view>
+      <view class="stats-desc">{{discountDesc}}</view>
+    </view>
+    <!-- 右侧数值区域 -->
+    <view class="stats-right">
+      <view class="stats-value">{{discountAmount}}</view>
+    </view>
   </view>
-  <!-- 右侧数值区域 -->
-  <view class="stats-right">
-    <view class="stats-value">{{discountAmount}}</view>
-  </view>
-  </view>>
+</view>
