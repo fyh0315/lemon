@@ -6,15 +6,36 @@ page {
 
 /* 容器 */
 .container {
-  padding: 16px;
+    padding: 16px;
 }
+
+/* 搜索框样式 */
+.search-box {
+    background-color: #fff;
+    border-radius: 13rpx;      /* 圆角 */
+    padding: 5rpx 20rpx;      /* 内边距 */
+    margin-bottom: 30rpx;      /* 与标题间距 */
+    width: 95%;
+    display: flex;             /* 使用flex布局容纳图标和输入框 */
+    align-items: center;       /* 垂直居中对齐 */
+    box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
+  }
+  .search-icon {
+  color: #999;               /* 图标颜色 */
+  margin-right: 15rpx;       /* 与输入框的间距 */
+}
+  .search-input {
+    width: 100%;
+    height: 60rpx;
+    font-size: 28rpx;
+  }
 
 /* 顶部标题 */
 .header {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px 0;
+    margin: 50px 0;
     width: 50%;
   }
   
@@ -37,7 +58,7 @@ page {
   
   /* 标题文字 */
   .header-title {
-    font-size: 32px;
+    font-size: 40px;
     font-weight: bold;
     color: #333;
     white-space: nowrap;
@@ -52,6 +73,7 @@ page {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin: 20px 0;
   align-items: center;
+  width: 90%;
 }
 .button-item {
   flex: 1;
@@ -60,8 +82,8 @@ page {
   margin: 0 50px;
 }
 .button-icon {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   margin-bottom: 4px;
 }
 .button-text {
@@ -83,7 +105,7 @@ page {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 16px;
   margin-bottom: 16px;
-  width: 287px;
+  width: 85%;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;

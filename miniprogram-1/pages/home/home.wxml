@@ -1,4 +1,10 @@
 <view class="container">
+   <!-- 搜索框 -->
+   <view class="search-box">
+    <icon class="search-icon" type="search" size="15" color="#999"></icon>
+    <input type="text" placeholder="搜索" class="search-input" />
+  </view>
+
   <!-- 顶部标题 -->
   <view class="header">
     <view class="header-line"></view>
