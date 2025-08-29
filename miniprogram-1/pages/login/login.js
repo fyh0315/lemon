@@ -1,3 +1,5 @@
+// 此页面待删除
+
 Page({
     data: {
       userInfo: null // 存储用户信息
@@ -11,7 +13,9 @@ Page({
       // 检查本地是否有 token，有则直接跳首页
       const token = wx.getStorageSync('token');
       if (token) {
-        wx.redirectTo({ url: '/pages/home/home' });
+        wx.switchTab({
+            url: '/pages/home/home'
+            });
       }
     },
   
@@ -21,6 +25,7 @@ Page({
      */
     bindGetUserProfile() {
       // 调用微信官方授权接口
+      //   现在已经不支持直接读取头像昵称了
       wx.getUserProfile({
         desc: '用于完善会员资料和正常使用小程序功能', // 必传参数，说明授权用途
         success: (userRes) => {

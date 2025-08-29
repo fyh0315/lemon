@@ -33,8 +33,7 @@
       <button class="btn cancel" bindtap="onCancel">取消</button>
       <button 
         class="btn confirm" 
-        open-type="getUserInfo" 
-        bindgetuserinfo="onGetUserInfo"
+        bindtap="bindGetUserProfile"
       >确定</button>
     </view>
   </view>
