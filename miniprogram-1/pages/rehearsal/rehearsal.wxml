@@ -1,0 +1,57 @@
+<!-- pages/rehearsal/list.wxml -->
+<!-- 搜索栏 -->
+<view class="search-bar">
+  <input type="text" placeholder="搜索" bindinput="onSearchInput" />
+  <icon type="search" size="20" />
+</view>
+
+<!-- 排练室列表 暂时写死调样式 内容待调整-->
+<view class="room-list">
+    <block >
+    <!--1 需要补充到上面 wx:for="{{rehearsalList}}" wx:key="id" -->
+        <view class="room-item">
+        <!-- 左侧图片 -->
+        <image 
+        class="room-img" 
+        src="{{item.imageUrl}}" 
+        mode="aspectFill" 
+        > </image>
+        
+        <view class="room-content">
+        <!-- 标题行 -->
+        <view class="title-row">
+            <text class="title">排练室A</text>
+            <!--2 {{item.name}} -->
+            <text class="time">0:00-24:00</text>
+            <!--3 {{item.openTime}}-{{item.closeTime}} -->
+        </view>
+        
+        <!-- 中间文字内容容器 -->
+        <view class="room-text-content">
+            <text class="desc">一家很酸的排练室</text>
+            <!--4 {{item.description}} -->
+            <view class="tags-row">
+                <text class="tag" >
+                <!--5 上面wx:for="{{item.tags.split(',')}}" wx:key="tagIndex" -->
+                <!--6 {{item}} -->
+                标签
+                </text>
+            </view>
+
+            <view class="price-row">
+                <text class="original-price" wx:if="{{item.isDiscount}}">
+                ¥{{item.originalPrice}}/h
+                </text>
+                <text class="discount-price">¥{{item.discountPrice}}/h</text>
+            </view>
+        </view>
+
+        </view>
+
+    <!-- 右侧预订按钮 -->
+    <button class="book-btn" bindtap="handleBook" data-id="{{item.id}}">
+      预订
+    </button>
+  </view>
+</block>
+</view>

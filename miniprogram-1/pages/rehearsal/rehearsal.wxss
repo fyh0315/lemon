@@ -1,0 +1,139 @@
+/* pages/rehearsal/list.wxss */
+.search-bar {
+    display: flex;
+    align-items: center;
+    padding: 10rpx;
+    background-color: #f5f5f5;
+    border-radius: 8rpx;
+    margin: 10rpx;
+  }
+  
+  .search-bar input {
+    flex: 1;
+    height: 60rpx;
+    font-size: 28rpx;
+  }
+  
+  .room-list {
+    margin: 10rpx;
+  }
+  
+  .room-item {
+    height: 240rpx;
+    display: flex; /* 图片与内容并排 */
+    padding: 20rpx;
+    background-color: #f9f9f9;
+    border-radius: 8rpx;
+    margin-bottom: 20rpx;
+    align-items: flex-start; /* 垂直顶部对齐 */
+  }
+  
+  .room-img {
+    width: 230rpx;   /* 图片宽度 */
+    height: 230rpx;  /* 图片高度 */
+    border-radius: 4rpx;
+    margin-right: 16rpx; /* 图片与内容的间距 */
+  }
+  
+  .room-content{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20rpx;
+}
+
+  /* 标题+时间行：两端对齐 */
+  .title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8rpx;
+    padding: 0 10rpx;
+    margin-bottom: 12rpx;
+  }
+  
+  .title {
+    font-size: 32rpx;
+    font-weight: bold;
+  }
+  
+  .time {
+    font-size: 24rpx;
+    color: #666;
+  }
+
+  /* 中间文字内容容器：占满剩余水平空间 */
+  .room-text-content {
+    flex: 1;
+    margin-right: 16rpx; /* 与预订按钮的间距 */
+  }
+
+  
+  /* 描述文字：单行省略 */
+ .desc {
+    font-size: 26rpx;
+    color: #999;
+    margin-bottom: 8rpx;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    margin-bottom: 12rpx; /* 增大间距 */
+  }
+  
+  /* 标签行：水平排列 */
+  .tags-row {
+    display: flex;
+    margin-bottom: 8rpx;
+    margin-bottom: 12rpx;
+  }
+  
+  /* 此处待修改 怎么调都不居中 */
+  .tag {
+    border: 2rpx solid red;
+    color: red;
+    font-size: 22rpx;
+    line-height: 22rpx;
+    padding: 2rpx 15rpx; /* 上下内边距对称，保证垂直居中空间 */
+    border-radius: 4rpx;
+    margin-right: 15rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+
+  
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 10rpx;
+  }
+  
+  .original-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-right: 10rpx;
+    font-size: 24rpx;
+  }
+  
+  .discount-price {
+    color: red;
+    font-size: 28rpx;
+    font-weight: bold;
+  }
+  
+  .book-btn {
+    background-color: #007AFF;
+    color: white;
+    padding: 20rpx 46rpx;
+    border-radius: 4rpx;
+    font-size: 28rpx;
+    align-self: flex-end; /* 垂直方向靠底部 */
+    margin-top: auto; /* 自动占据上方空间，推到右下角 */
+    line-height: 1;
+  }
+
+  
