@@ -44,10 +44,15 @@ Page({
       });
     },
   
-    // 预订按钮点击事件
+     // 预订按钮点击事件
     handleBook(e) {
-      const roomId = e.currentTarget.dataset.id;
-      wx.showToast({ title: `预订排练室ID: ${roomId}`, icon: 'none' });
-      // 可扩展：跳转到预订详情页，如 wx.navigateTo({ url: '/pages/book/detail?id=' + roomId })
-    }
+    // 获取当前排练室的id（从data-id中获取）
+    const roomId = e.currentTarget.dataset.id;
+    
+    // 跳转到详情页（假设详情页路径为 pages/rehearsal/detail）
+    wx.navigateTo({
+      url: '/pages/rhs_detail/rhs_detail', 
+      // 待修改，应携带id参数到详情页
+    });
+  },
   });

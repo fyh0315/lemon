@@ -80,28 +80,27 @@
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-    margin-bottom: 12rpx; /* 增大间距 */
+    margin-bottom: 18rpx; /* 增大间距 */
   }
   
   /* 标签行：水平排列 */
   .tags-row {
     display: flex;
-    margin-bottom: 8rpx;
     margin-bottom: 12rpx;
   }
+
   
-  /* 此处待修改 怎么调都不居中 */
   .tag {
     border: 2rpx solid red;
     color: red;
     font-size: 22rpx;
-    line-height: 22rpx;
+    line-height: 28rpx;
     padding: 2rpx 15rpx; /* 上下内边距对称，保证垂直居中空间 */
     border-radius: 4rpx;
     margin-right: 15rpx;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-bottom: 10rpx;
+    display: inline-block;
+    text-align: center;
   }
   
 

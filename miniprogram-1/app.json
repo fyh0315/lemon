@@ -4,7 +4,8 @@
     "pages/home/home",
     "pages/orders/orders",
     "pages/mine/mine",
-    "pages/rehearsal/rehearsal"
+    "pages/rehearsal/rehearsal",
+    "pages/rhs_detail/rhs_detail"
     
   ],
   "window": {
@@ -45,6 +46,7 @@
   "usingComponents": {
     "van-button": "@vant/weapp/button/index"
   }
+
   
 
 }

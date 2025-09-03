@@ -1,0 +1,80 @@
+<!-- roomDetail.wxml -->
+<!-- 1. 幻灯片区域 -->
+<view class="slide-container">
+  <swiper 
+    indicator-dots="{{false}}" 
+    current="{{currentSlide}}"
+    circular
+  >
+    <swiper-item wx:for="{{slides}}" wx:key="index">
+      <view class="slide-item">{{item.title}}</view>
+    </swiper-item>
+  </swiper>
+  <view class="slide-nav">
+    <text>{{currentSlide + 1}} of {{slides.length}}</text>
+    <button bindtap="prevSlide">上一页</button>
+    <button bindtap="nextSlide">下一页</button>
+  </view>
+</view>
+
+<!-- 2. 排练室基本信息 -->
+<view class="room-info">
+  <view class="room-name">排练室A</view>
+  <!--1 {{roomInfo.name}} -->
+  <view class="room-time">0:00-24:00</view>
+  <!--2 {{roomInfo.time}} -->
+  <view class="room-price">¥120/h</view>
+  <!-- 3{{roomInfo.price}} -->
+  <view class="room-location">
+    <!--下面的地点图标不知道为什么显示不出来,待修改-->
+    <icon type="location" size="16" color="#666"/>
+    <view class="location">上海市普陀区XXX</view>
+    <!--4 {{roomInfo.location}} -->
+    <view class="btns">
+    <button class="tomap" bindtap="toMap">地图</button>
+    <button bindtap="makeCall" class="call-btn">📞 联系商家</button>
+    </view>
+  </view>
+</view>
+
+<!-- 3. 设备列表 -->
+<view class="device-list">
+  <text class="title">设备</text>
+  <block>
+    <!--5 wx:for="{{roomInfo.devices}}" wx:key="index" -->
+    <view class="device-item">
+      <image 
+        src="{{item.image || '/images/default-device.png'}}" 
+        mode="widthFix" 
+        class="device-img"
+      ></image>
+      <view class="device-info">
+        <view class="device-name">鼓</view>
+        <!--6 {{item.name}} -->
+        <text class="device-model">XXX型号</text>
+        <!--7 {{item.model}} -->
+      </view>
+    </view>
+  </block>
+</view>
+
+<!-- 4. 优惠区域 -->
+<view class="discount">
+  <view class="title">优惠</view>
+  <view class="discount-card">
+    <view class="discount-text">
+      <text class="discount-name">XXX卡</text>
+      <!--8 {{discount.name}} -->
+      <text class="discount-desc">全天可用</text>
+      <!--9 {{discount.desc}} -->
+    </view>
+    <button bindtap="buyCard" class="buy-btn">抢购</button>
+  </view>
+</view>
+
+<!-- 5. 底部操作按钮 -->
+<view class="bottom-btns">
+  <button class="book-btn" bindtap="toService">客服</button>
+  <button class="book-btn" bindtap="likeRoom">喜欢</button>
+  <button class="book-btn" bindtap="bookNow" class="book-btn">立即预订</button>
+</view>

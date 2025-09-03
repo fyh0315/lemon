@@ -1,0 +1,163 @@
+/* roomDetail.wxss */
+.slide-container {
+    width: 100%;
+    height: 300rpx;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .slide-item {
+    width: 100%;
+    height: 250rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36rpx;
+  }
+  
+  .slide-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20rpx;
+    margin-top: 10rpx;
+  }
+  
+  .room-info {
+    padding: 20rpx;
+    border-bottom: 1rpx solid #eee;
+  }
+  
+  .room-name {
+    font-size: 36rpx;
+    font-weight: bold;
+    margin-bottom: 10rpx;
+  }
+  
+  .room-time, .room-price {
+    display: block;
+    margin: 10rpx 0;
+    color: #666;
+  }
+  
+  .room-location {
+    display: flex;
+    align-items: center;
+    gap: 10rpx;
+    margin: 10rpx 0;
+    flex-wrap: wrap;
+  }
+  
+  .btns{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 20rpx; 
+    margin-left: auto;
+  }
+
+  .tomap{
+    background-color: #38393a;
+    color: white;
+    font-size: 28rpx;
+    padding: 10rpx 28rpx;
+    border: none;
+    margin-right: 5rpx;
+  }
+
+  .call-btn {
+    background: #333;
+    color: #fff;
+    font-size: 28rpx;
+    padding: 10rpx 30rpx;
+    border: none;
+    margin-left: 5rpx;
+  }
+  
+  .device-list {
+    padding: 20rpx;
+    border-bottom: 1rpx solid #eee;
+  }
+  
+  .title {
+    font-size: 32rpx;
+    font-weight: bold;
+    margin-bottom: 15rpx;
+    display: block;
+  }
+  
+  .device-item {
+    display: flex;
+    align-items: center;
+    gap: 20rpx;
+    margin-bottom: 20rpx;
+  }
+  
+  .device-img {
+    width: 100rpx;
+    height: 100rpx;
+  }
+  
+  .device-name {
+    font-size: 28rpx;
+    font-weight: bold;
+  }
+  
+  .device-model {
+    font-size: 24rpx;
+    color: #999;
+  }
+  
+  .discount {
+    padding: 20rpx;
+    border-bottom: 1rpx solid #eee;
+  }
+  
+  .discount-card {
+    border: 1rpx solid #298deb;
+    border-radius: 10rpx;
+    padding: 15rpx;
+    display: flex;
+    align-items: center;
+    background: #d2f1ff;
+    height: 100rpx;
+  }
+  
+  .discount-name {
+    font-size: 28rpx;
+    font-weight: bold;
+    display: block;
+  }
+  
+  .discount-desc {
+    font-size: 24rpx;
+    color: #666;
+  }
+  
+  .buy-btn {
+    background: #007aff;
+    color: #fff;
+    padding: 5rpx 28rpx;
+    border-radius: 6rpx;
+    font-size: 28rpx;
+    margin-left: auto; 
+  }
+  
+  .buy-btn::after {
+    border: none;
+  }
+
+  .bottom-btns {
+    display: flex;
+    justify-content: space-around;
+    padding: 20rpx;
+  }
+  
+  .book-btn {
+    background: #00cc99;
+    color: #fff;
+    padding: 15rpx 30rpx;
+    border-radius: 6rpx;
+  }
