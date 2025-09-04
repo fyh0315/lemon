@@ -1,7 +1,7 @@
 /* roomDetail.wxss */
 .slide-container {
     width: 100%;
-    height: 300rpx;
+    height: 350rpx;
     background: #f5f5f5;
     display: flex;
     flex-direction: column;
@@ -18,29 +18,37 @@
     font-size: 36rpx;
   }
   
-  .slide-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20rpx;
-    margin-top: 10rpx;
-  }
   
   .room-info {
     padding: 20rpx;
     border-bottom: 1rpx solid #eee;
   }
   
+  .room-nt{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15rpx;
+  }
+
   .room-name {
-    font-size: 36rpx;
+    font-size: 42rpx;
     font-weight: bold;
     margin-bottom: 10rpx;
   }
   
-  .room-time, .room-price {
+  .room-time {
     display: block;
     margin: 10rpx 0;
     color: #666;
+  }
+
+  .room-price {
+    display: block;
+    margin: 10rpx 0;
+    color: #666;
+    font-size: 32rpx;
   }
   
   .room-location {
@@ -113,6 +121,8 @@
   .discount {
     padding: 20rpx;
     border-bottom: 1rpx solid #eee;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .discount-card {
@@ -122,7 +132,10 @@
     display: flex;
     align-items: center;
     background: #d2f1ff;
-    height: 100rpx;
+    height: 120rpx;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
   }
   
   .discount-name {
@@ -142,7 +155,7 @@
     padding: 5rpx 28rpx;
     border-radius: 6rpx;
     font-size: 28rpx;
-    margin-left: auto; 
+    left: 230rpx;
   }
   
   .buy-btn::after {
@@ -150,14 +163,55 @@
   }
 
   .bottom-btns {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* 调整内边距，上下15rpx让高度更舒展，左右20rpx控制侧边间距 */
+    padding: 15rpx 20rpx;
+    background-color: #fff;
+    border-top: 1rpx solid #f5f5f5;
+    z-index: 99;
     display: flex;
-    justify-content: space-around;
-    padding: 20rpx;
+    align-items: center; /* 子元素垂直居中 */
+    justify-content: space-between; /* 左右元素分散排列 */
+    box-sizing: border-box;
+  }
+
+  .bottom-left {
+    display: flex;
+    flex-direction: row; /* 横向排列（核心修改） */
+    align-items: center; /* 内部元素垂直居中 */
+    gap: 30rpx; /* 客服和喜欢之间的间距 */
+  }
+
+  .contact, .likeit {
+    display: flex;
+    flex-direction: column; /* 图标+文字垂直堆叠 */
+    align-items: center; /* 水平居中 */
   }
   
+  /* 图标尺寸控制 */
+  .contact-image, .likeit-image {
+    width: 32rpx;
+    height: 32rpx;
+    object-fit: contain; /* 防止图标变形 */
+  }
+  
+  /* 文字样式优化 */
+  .contact-wrd, .lekeit-wrd { /* 注意：wxml里是lekeit-wrd，需和CSS类名一致 */
+    font-size: 24rpx;
+    color: #666;
+    margin-top: 4rpx; /* 文字与图标间距 */
+  }
+
   .book-btn {
     background: #00cc99;
     color: #fff;
-    padding: 15rpx 30rpx;
-    border-radius: 6rpx;
+    padding: 10rpx 50rpx;
+    border-radius: 80rpx;
+    font-size: 28rpx;
+    border: none;
+    min-width: 200rpx;
+    margin-left: 350rpx;
   }

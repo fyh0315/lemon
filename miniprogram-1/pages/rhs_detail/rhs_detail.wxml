@@ -10,19 +10,16 @@
       <view class="slide-item">{{item.title}}</view>
     </swiper-item>
   </swiper>
-  <view class="slide-nav">
-    <text>{{currentSlide + 1}} of {{slides.length}}</text>
-    <button bindtap="prevSlide">上一页</button>
-    <button bindtap="nextSlide">下一页</button>
-  </view>
 </view>
 
 <!-- 2. 排练室基本信息 -->
 <view class="room-info">
-  <view class="room-name">排练室A</view>
-  <!--1 {{roomInfo.name}} -->
-  <view class="room-time">0:00-24:00</view>
-  <!--2 {{roomInfo.time}} -->
+  <view class="room-nt">
+    <view class="room-name">排练室A</view>
+    <!--1 {{roomInfo.name}} -->
+    <view class="room-time">0:00-24:00</view>
+    <!--2 {{roomInfo.time}} -->
+  </view>
   <view class="room-price">¥120/h</view>
   <!-- 3{{roomInfo.price}} -->
   <view class="room-location">
@@ -74,7 +71,15 @@
 
 <!-- 5. 底部操作按钮 -->
 <view class="bottom-btns">
-  <button class="book-btn" bindtap="toService">客服</button>
-  <button class="book-btn" bindtap="likeRoom">喜欢</button>
-  <button class="book-btn" bindtap="bookNow" class="book-btn">立即预订</button>
+    <view class="bottom-left">
+        <view class="contact" bindtap="toService">
+            <image class="contact-image" src="/images/contact.png"></image>
+            <view class="contact-wrd">客服</view>
+        </view>
+        <view class="likeit" bindtap="likeRoom">
+            <image class="likeit-image" src="/images/like.png"></image>
+            <view class="lekeit-wrd">喜欢</view>
+        </view>
+    </view>
+    <button class="book-btn" bindtap="bookNow" class="book-btn">立即预订</button>
 </view>
