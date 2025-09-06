@@ -51,7 +51,7 @@ Page({
     
     // 跳转到详情页（假设详情页路径为 pages/rehearsal/detail）
     wx.navigateTo({
-      url: '/pages/rhs_detail/rhs_detail', 
+      url: '/pages/rhs_detail/rhs_detail?roomId=${roomId}', 
       // 待修改，应携带id参数到详情页
     });
   },

@@ -5,7 +5,8 @@
     "pages/orders/orders",
     "pages/mine/mine",
     "pages/rehearsal/rehearsal",
-    "pages/rhs_detail/rhs_detail"
+    "pages/rhs_detail/rhs_detail",
+    "pages/form/form"
     
   ],
   "window": {

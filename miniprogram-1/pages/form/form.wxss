@@ -1,0 +1,161 @@
+/* form.wxss */
+/* 页面整体 */
+page {
+    background-color: #ffffff;
+    font-size: 32rpx;
+  }
+  
+  /* 顶部区域 */
+  .page-header {
+    display: flex;
+    align-items: center;
+    padding: 30rpx;
+    margin-bottom: 20rpx;
+  }
+  .room-avatar {
+    width: 120rpx;
+    height: 120rpx;
+    margin-right: 20rpx;
+  }
+  .room-name {
+    font-size: 40rpx;
+    font-weight: bold;
+  }
+  
+  .page-medium{
+    background-color: #e6f7ed;
+    margin: 0 30rpx 30rpx;
+  }
+
+  /* 表单区块通用样式 */
+  .form-section {
+    margin: 0 30rpx 30rpx;
+    padding: 30rpx;
+    background-color: #e6f7ed; /* 浅绿色背景 */
+    border-radius: 16rpx;
+  }
+  .label {
+    display: block;
+    margin-bottom: 20rpx;
+    font-size: 32rpx;
+  }
+  
+  /* 日期选择 */
+  .date-picker {
+    display: flex;
+    align-items: center;
+    border: 1rpx solid #cccccc;
+    border-radius: 8rpx;
+    padding: 16rpx;
+  }
+  .date-picker input {
+    flex: 1;
+  }
+  .calendar-icon {
+    width: 40rpx;
+    height: 40rpx;
+  }
+  
+  /* 时段选择 */
+  .time-range {
+    display: flex;
+    align-items: center;
+    gap: 10rpx;
+  }
+  
+  .time-picker {
+    display: flex;
+    align-items: center;
+    gap: 8rpx;
+    padding: 12rpx 16rpx;
+    border: 1rpx solid #e5e5e5;
+    border-radius: 8rpx;
+    cursor: pointer;
+  }
+  
+  .time-picker text {
+    color: #333;
+    font-size: 30rpx;
+  }
+  
+  .calendar-icon {
+    width: 24rpx;
+    height: 24rpx;
+    vertical-align: middle;
+  }
+  
+  .unit {
+    color: #666;
+    font-size: 28rpx;
+  }
+
+  
+  
+  /* 人数选择 */
+  .people-count {
+    display: flex;
+    align-items: center;
+  }
+  .people-count input {
+    width: 120rpx;
+    height: 60rpx;
+    border: 1rpx solid #cccccc;
+    border-radius: 8rpx;
+    text-align: center;
+    margin-right: 20rpx;
+  }
+  .count-buttons image {
+    width: 40rpx;
+    height: 40rpx;
+    display: block;
+    margin: 5rpx 0;
+  }
+  
+  /* 优惠券区域 */
+  .coupon-area {
+    padding: 20rpx;
+    border: 1rpx solid #cccccc;
+    border-radius: 8rpx;
+    min-height: 80rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 30rpx 30rpx;
+  }
+  
+  /* 底部栏 */
+  .footer-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30rpx;
+    border-top: 1rpx solid #eeeeee;
+    background-color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .total-price {
+    display: flex;
+    align-items: center;
+  }
+  .total-price .label {
+    margin-bottom: 0;
+    margin-right: 10rpx;
+  }
+  .total-price .price {
+    font-size: 40rpx;
+    color: #07c160; /* 绿色价格 */
+  }
+  .submit-btn {
+    width: 240rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    background-color: #07c160;
+    color: #ffffff;
+    border-radius: 40rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
