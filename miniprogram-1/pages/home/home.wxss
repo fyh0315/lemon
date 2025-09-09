@@ -1,13 +1,23 @@
 /* 全局页面设置 */
 page {
-  background-color: #f5f5f5; /* 浅灰色背景 */
+  background-color: #eaef9d;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* 容器 */
 .container {
-    padding: 16px;
-}
+    padding: 16rpx;
+  }
+
+  .bg-image {
+    position: absolute;
+    left: 0;
+    top: -260rpx;
+    width: 100%;
+    height: 100%;
+    max-height: 1230rpx;
+    z-index: -1; /* 置于底层 */
+    object-fit: cover; /* 填充容器 */
+  }
 
 /* 搜索框样式 */
 .search-box {

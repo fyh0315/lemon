@@ -13,11 +13,15 @@
     "backgroundTextStyle":"dark",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "乐萌",
-    "navigationBarBackgroundColor": "#efefef",
+    "navigationBarBackgroundColor": "#EAEF9D",
     "backgroundColor": "#efefef"
   },
 
   "tabBar": {
+        "color": "#666666", 
+        "selectedColor": "#388E3C", 
+        "backgroundColor": "#efefef", 
+        "borderStyle": "white",
     "list": [
         {
             "pagePath": "pages/home/home",
