@@ -22,10 +22,10 @@ page {
 /* 搜索框样式 */
 .search-box {
     background-color: #fff;
-    border-radius: 13rpx;      /* 圆角 */
+    border-radius: 40rpx;      /* 圆角 */
     padding: 5rpx 20rpx;      /* 内边距 */
     margin-bottom: 30rpx;      /* 与标题间距 */
-    width: 95%;
+    width: 85%;
     display: flex;             /* 使用flex布局容纳图标和输入框 */
     align-items: center;       /* 垂直居中对齐 */
     box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
@@ -83,7 +83,7 @@ page {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin: 20px 0;
   align-items: center;
-  width: 90%;
+  width: 85%;
 }
 .button-item {
   flex: 1;
@@ -115,7 +115,7 @@ page {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 16px;
   margin-bottom: 16px;
-  width: 85%;
+  width: 80%;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
