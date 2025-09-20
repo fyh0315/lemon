@@ -1,5 +1,5 @@
 <view class="container">
-    <image src="/images/home/bg1.jpg" class="bg-image"></image>
+    <image src="https://lemon-shanghai.oss-cn-shanghai.aliyuncs.com/bg.jpg" class="bg-image"></image>
    <!-- 搜索框 -->
    <view class="search-box">
     <icon class="search-icon" type="search" size="15" color="#999"></icon>
@@ -9,20 +9,20 @@
   <!-- 顶部标题 -->
   <view class="header">
     <view class="header-line"></view>
-    <text class="header-title">乐萌</text>
+    <image class="header-title" src="https://lemon-shanghai.oss-cn-shanghai.aliyuncs.com/home/lemeng.PNG"></image>
     <view class="header-line"></view>
   </view>
 
   <!-- 功能按钮区 -->
   <view class="button-group">
     <view class="button-item">
-      <image src="/images/home/coupon.png" class="button-icon"></image>
+      <image src="https://lemon-shanghai.oss-cn-shanghai.aliyuncs.com/home/coupon.PNG" class="button-icon"></image>
       <view class="button-text">乐优惠</view>
     </view>
     <!-- 竖线分隔符 -->
     <view class="divider"></view>
     <view class="button-item" bindtap="onTapGoRehearsal">
-      <image src="/images/home/note.png" class="button-icon"></image>
+      <image src="https://lemon-shanghai.oss-cn-shanghai.aliyuncs.com/home/note.png" class="button-icon"></image>
       <view class="button-text">去排练</view>
     </view>
   </view>

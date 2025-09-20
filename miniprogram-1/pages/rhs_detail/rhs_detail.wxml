@@ -2,12 +2,15 @@
 <!-- 1. 幻灯片区域 -->
 <view class="slide-container">
   <swiper 
-    indicator-dots="{{false}}" 
+    indicator-dots="{{true}}" 
     current="{{currentSlide}}"
-    circular
+    circular="{{true}}"
+    autoplay="{{true}}"
+    interval="3000"
+    duration="500"
   >
     <swiper-item wx:for="{{slides}}" wx:key="index">
-      <view class="slide-item">{{item.title}}</view>
+      <image class="slide-image" src={{item.imageUrl}} mode="widthFix"></image>
     </swiper-item>
   </swiper>
 </view>
@@ -16,17 +19,17 @@
 <view class="room-info">
   <view class="room-nt">
     <view class="room-name">排练室A</view>
-    <!--1 {{roomInfo.name}} -->
+    <!--1 {{name}} -->
     <view class="room-time">0:00-24:00</view>
-    <!--2 {{roomInfo.time}} -->
+    <!--2 {{openTime}}-{{closeTime}} -->
   </view>
   <view class="room-price">¥120/h</view>
-  <!-- 3{{roomInfo.price}} -->
+  <!-- 3{{pricePerHour}} -->
   <view class="room-location">
     <!--下面的地点图标不知道为什么显示不出来,待修改-->
     <icon type="location" size="16" color="#666"/>
     <view class="location">上海市普陀区XXX</view>
-    <!--4 {{roomInfo.location}} -->
+    <!--4 {{adress}} -->
     <view class="btns">
     <button class="tomap" bindtap="toMap">地图</button>
     <button bindtap="makeCall" class="call-btn">📞 联系商家</button>
@@ -38,7 +41,7 @@
 <view class="device-list">
   <text class="title">设备</text>
   <block>
-    <!--5 wx:for="{{roomInfo.devices}}" wx:key="index" -->
+    <!--5 wx:for="{{devices}}" wx:key="index" -->
     <view class="device-item">
       <image 
         src="{{item.image || '/images/default-device.png'}}" 
@@ -73,11 +76,11 @@
 <view class="bottom-btns">
     <view class="bottom-left">
         <view class="contact" bindtap="toService">
-            <image class="contact-image" src="/images/contact.png"></image>
+            <image class="contact-image" src="https://lemon-shanghai.oss-cn-shanghai.aliyuncs.com/contact.png"></image>
             <view class="contact-wrd">客服</view>
         </view>
         <view class="likeit" bindtap="likeRoom">
-            <image class="likeit-image" src="/images/like.png"></image>
+            <image class="likeit-image" src="https://lemon-shanghai.oss-cn-shanghai.aliyuncs.com/like.png"></image>
             <view class="lekeit-wrd">喜欢</view>
         </view>
     </view>

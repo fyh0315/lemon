@@ -1,6 +1,6 @@
 /* 全局页面设置 */
 page {
-  background-color: #eaef9d;
+  background-color: #e7f9d1;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -45,8 +45,8 @@ page {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 50px 0;
-    width: 50%;
+    width: 75%;
+    margin: 30rpx 0;
   }
   
   /* 横线样式 */
@@ -68,9 +68,8 @@ page {
   
   /* 标题文字 */
   .header-title {
-    font-size: 40px;
-    font-weight: bold;
-    color: #333;
+    width: 240rpx;
+    height: 130rpx;
     white-space: nowrap;
   }
 

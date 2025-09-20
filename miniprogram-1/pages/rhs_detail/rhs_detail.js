@@ -1,10 +1,17 @@
 Page({
     data: {
       id: '',         // 接收的排练室ID
-      slides: [],     // 幻灯片数据
-      currentSlide: 0,// 当前幻灯片索引
-      roomInfo: {},   // 排练室信息（名称、时间、价格、设备等）
-      discount: {},   // 优惠信息
+      slides: [],     // 幻灯片数据,此处待修改
+      imageUrl : "",
+      description: '',
+      pricePerHour: 0.0,
+      openTime : "",
+      closeTime : "",
+      tags : "",
+      address : "",
+      phone : "",
+      devices :[],
+      discount:[],
     },
   
     // 页面加载时接收参数并请求数据
@@ -26,11 +33,18 @@ Page({
             const data = res.data.data;
             this.setData({
               slides: data.slides,      
+              imageUrl: data.imageUrl,
               // 轮播图数据（数组，含title等字段）
-              roomInfo: data.roomInfo,  
-              // 排练室信息（含name、time、price、location、devices等）
-              discount: data.discount,  
-              // 优惠信息（含name、desc等）
+              name: data.name,
+              description: data.description,
+              pricePerHour: data.pricePerHour,
+              openTime: data.openTime,
+              closeTime: data.closeTime,
+              tags: data.tags,
+              address: data.address,
+              phone: data.phone,
+              devices: data.devices,
+              discount: data.discount,
             });
           }
         },
@@ -39,22 +53,6 @@ Page({
           wx.showToast({ title: '数据加载失败', icon: 'none' });
         }
       });
-    },
-  
-    // 幻灯片切换：上一页
-    prevSlide() {
-      const { currentSlide, slides } = this.data;
-      if (currentSlide > 0) {
-        this.setData({ currentSlide: currentSlide - 1 });
-      }
-    },
-  
-    // 幻灯片切换：下一页
-    nextSlide() {
-      const { currentSlide, slides } = this.data;
-      if (currentSlide < slides.length - 1) {
-        this.setData({ currentSlide: currentSlide + 1 });
-      }
     },
   
     // 跳转地图（根据地址打开地图）

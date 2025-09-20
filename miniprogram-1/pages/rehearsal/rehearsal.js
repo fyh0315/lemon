@@ -1,7 +1,7 @@
 // pages/rehearsal/list.js
 Page({
     data: {
-      rehearsalList: [], // 存储后端返回的列表（每条含imageUrl）
+      rehearsalList: [], // 存储后端返回的列表
       searchKey: ''      // 搜索关键词
     },
   
@@ -18,17 +18,17 @@ Page({
     // 发起后端请求（POST + JSON传参）
     fetchRehearsalList() {
       wx.request({
-        url: 'http://test-cn.your-api-server.com/store/query', // 后端接口地址
+        url: 'http://test-cn.your-api-server.com/store/query', // 后续改为后端接口地址
         method: 'POST',
         header: { 'Content-Type': 'application/json' }, // 声明JSON格式
-        data: JSON.stringify({
+        data: ({
           name: this.data.searchKey, // 搜索关键词（可扩展价格、标签等筛选）
           pageNum: 1,
           pageSize: 10
         }),
         success: (res) => {
           console.log('后端返回数据：', res.data); // 调试用，查看实际结构
-          if (res.data.code === 1) { // 假设后端code=1为成功
+          if (res.data.code === 1) { // 后端code=1为成功
             // 假设后端数据在 res.data.data.stores，且每条含imageUrl
             this.setData({
               rehearsalList: res.data.data.stores
@@ -51,8 +51,8 @@ Page({
     
     // 跳转到详情页（假设详情页路径为 pages/rehearsal/detail）
     wx.navigateTo({
-      url: '/pages/rhs_detail/rhs_detail?roomId=${roomId}', 
-      // 待修改，应携带id参数到详情页
+      url: `/pages/rhs_detail/rhs_detail?roomId=${roomId}`, 
+    // 携带id参数到详情页
     });
   },
   });

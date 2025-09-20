@@ -33,7 +33,7 @@
             <view class="tags-row">
                 <view class="tag" >
                 <!--5 上面wx:for="{{item.tags.split(',')}}" wx:key="tagIndex" -->
-                <!--6 {{item}} -->
+                <!--6 {{item}} （?）-->
                 标签
                 </view>
             </view>
