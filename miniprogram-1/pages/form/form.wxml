@@ -8,18 +8,18 @@
 <view class="page-medium">
 <!-- 日期选择模块 -->
 <view class="form-section">
-  <text class="label">日期</text>
+  <view class="label">日期</view>
   <picker mode="date" value="{{selectedDate}}" start="2025-09-05" end="2025-12-31" bindchange="handleDateChange">
     <view class="date-picker">
       <input type="text" placeholder="点击选择日期" value="{{selectedDate}}" disabled />
-      <image src="/images/calendar-icon.png" class="calendar-icon" />
+      <image src="https://lemon-shanghai.oss-cn-shanghai.aliyuncs.com/calendar.png" class="calendar-icon" />
     </view>
   </picker>
 </view>
 
 <!-- 时段选择模块 -->
 <view class="form-section">
-  <text class="label">时段</text>
+  <view class="label">时段</view>
   <view class="time-range">
     <!-- 开始时间选择器 -->
     <picker 
@@ -29,12 +29,12 @@
       end="22:00" 
       bindchange="handleStartTimeChange">
       <view class="time-picker">
-        <text>{{startTime ? startTime.split(':')[0] : '开始'}}</text>
+        <text>{{startTime}}</text>
         <image src="/images/calendar-icon.png" class="calendar-icon" />
       </view>
     </picker>
     
-    <text class="separator">—</text>
+    <view class="separator">—</view>
     
     <!-- 结束时间选择器 -->
     <picker 
@@ -44,23 +44,23 @@
       end="24:00" 
       bindchange="handleEndTimeChange">
       <view class="time-picker">
-        <text>{{endTime ? endTime.split(':')[0] : '结束'}}</text>
+        <text>{{endTime}}</text>
         <image src="/images/calendar-icon.png" class="calendar-icon" />
       </view>
     </picker>
     
-    <text class="unit">时</text>
+    <view class="unit">时</view>
   </view>
 </view>
 
 <!-- 预计人数模块 -->
 <view class="form-section">
-  <text class="label">预计人数</text>
+  <view class="label">预计人数</view>
   <view class="people-count">
     <input type="number" value="{{peopleCount}}" bindinput="handlePeopleCountInput" />
     <view class="count-buttons">
-      <image src="/images/arrow-up.png" bindtap="handlePeopleCountUp" />
-      <image src="/images/arrow-down.png" bindtap="handlePeopleCountDown" />
+      <image src="https://lemon-shanghai.oss-cn-shanghai.aliyuncs.com/book/arrow-up.PNG" bindtap="handlePeopleCountUp" />
+      <image src="https://lemon-shanghai.oss-cn-shanghai.aliyuncs.com/book/arrow-down.PNG" bindtap="handlePeopleCountDown" />
     </view>
   </view>
 </view>
@@ -68,17 +68,17 @@
 
 <!-- 优惠券选择模块 -->
 <view class="form-section">
-  <text class="label">选择优惠券</text>
+  <view class="label">选择优惠券</view>
   <view class="coupon-area">
-    <view>暂无可用优惠券</view>
+    <view></view>
   </view>
 </view>
 
 <!-- 底部：合计与提交按钮 -->
 <view class="footer-bar">
   <view class="total-price">
-    <text class="label">合计：</text>
-    <text class="price">¥ 120</text>
+    <view class="label">合计：</view>
+    <view class="price">¥ 120</view>
   </view>
   <button class="submit-btn" bindtap="handleSubmit">提交订单</button>
 </view>

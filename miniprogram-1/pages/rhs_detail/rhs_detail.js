@@ -86,14 +86,14 @@ Page({
   
     // 标记“喜欢”
     likeRoom() {
-      // 可调用后端接口标记“喜欢”，这里简单提示
+      // 调用后端接口标记“喜欢”，这里简单提示
       wx.showToast({ title: '已添加到“我的喜欢”', icon: 'success' });
     },
   
     // 立即预订
     bookNow() {
       wx.navigateTo({
-        url: '/pages/form/form?roomId=${this.data.id}', // 跳转到预订页并传id
+        url: '/pages/form/form?id=${this.data.id}', // 跳转到预订页并传id
       });
     },
   });

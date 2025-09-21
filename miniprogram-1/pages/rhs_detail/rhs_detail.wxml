@@ -10,7 +10,7 @@
     duration="500"
   >
     <swiper-item wx:for="{{slides}}" wx:key="index">
-      <image class="slide-image" src={{item.imageUrl}} mode="widthFix"></image>
+      <image class="slide-image" src="{{item.imageUrl}}" mode="widthFix"></image>
     </swiper-item>
   </swiper>
 </view>

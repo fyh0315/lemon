@@ -1,11 +1,71 @@
 Page({
     data: {
-      startTime: '09:00', // 默认开始时间
-      endTime: '10:00',   // 默认结束时间
-      startHour: 9,       // 开始小时（用于计算）
-      endHour: 10         // 结束小时（用于计算）
-    },
+        // 排练室信息
+        id: '',       
+        imageUrl : "",  //排练室图片
+        pricePerHour: 0.0,
+        openTime : "",
+        closeTime : "",
+        // 预约日期
+        selectedDate: '',
+        // 排练时间
+        startTime: '09:00', // 默认开始时间
+        endTime: '10:00',   // 默认结束时间
+        startHour: 9,       // 开始小时（用于计算）
+        endHour: 10,     // 结束小时（用于计算）
+        //人数
+        peopleCount: 1,  
+        // 优惠信息
+        discount:[],
+        // 价格
+        price: 0,
+      },
   
+      // 页面加载时接收参数并请求数据
+    onLoad(options) {
+        // 接收前一页传递的id（如：pages/roomDetail/roomDetail?id=123）
+        this.setData({ id: options.id }, () => {
+          this.getRoomData(); // 回调中请求数据，确保id已赋值
+        });
+      },
+    
+    // 根据id请求排练室数据
+    getRoomData() {
+        wx.request({
+          url: 'https://your-api.com/roomdetail?roomid=id', 
+          // 后端接口（需替换为实际地址）
+          method: 'GET',
+          success: (res) => {
+            if (res.data.code === 200) { // 假设后端返回code=200为成功
+              const data = res.data.data;
+              this.setData({    
+                imageUrl: data.imageUrl,
+                name: data.name,
+                // description: data.description,
+                pricePerHour: data.pricePerHour,
+                openTime: data.openTime,
+                closeTime: data.closeTime,
+                // tags: data.tags,
+                // address: data.address,
+                // phone: data.phone,
+                // devices: data.devices,
+                discount: data.discount,
+              });
+            }
+          },
+          fail: (err) => {
+            console.error('获取排练室数据失败', err);
+            wx.showToast({ title: '数据加载失败', icon: 'none' });
+          }
+        });
+      },
+
+    handleDateChange(e) {
+        this.setData({
+          selectedDate: e.detail.value
+        });
+    },
+
     // 开始时间选择事件
     handleStartTimeChange(e) {
       const time = e.detail.value;
@@ -43,5 +103,34 @@ Page({
           endHour: startHour + 1
         });
       }
+    },
+
+    // 点击向上箭头：人数+1
+    handlePeopleCountUp() {
+    this.setData({
+      peopleCount: this.data.peopleCount + 1
+    });
+    },
+
+    // 点击向下箭头：人数-1（最小为1）
+    handlePeopleCountDown() {
+    if (this.data.peopleCount > 1) { // 防止人数小于1
+      this.setData({
+        peopleCount: this.data.peopleCount - 1
+      });
     }
+  },
+
+    // 输入框手动输入时的校验（确保是正整数）
+    handlePeopleCountInput(e) {
+    let value = e.detail.value;
+    // 过滤非数字字符
+    value = value.replace(/[^\d]/g, '');
+    // 转换为数字（如果为空或0，默认设为1）
+    const count = value ? parseInt(value, 10) : 1;
+    this.setData({
+      peopleCount: count < 1 ? 1 : count // 确保最小为1
+    });
+  },
+
   });

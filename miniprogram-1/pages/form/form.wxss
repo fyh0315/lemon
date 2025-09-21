@@ -47,6 +47,7 @@ page {
     border: 1rpx solid #cccccc;
     border-radius: 8rpx;
     padding: 16rpx;
+    background-color: #ffffff;
   }
   .date-picker input {
     flex: 1;
@@ -71,6 +72,8 @@ page {
     border: 1rpx solid #e5e5e5;
     border-radius: 8rpx;
     cursor: pointer;
+    background-color: #ffffff;
+    min-width: 120rpx;
   }
   
   .time-picker text {
@@ -79,8 +82,8 @@ page {
   }
   
   .calendar-icon {
-    width: 24rpx;
-    height: 24rpx;
+    width: 40rpx;
+    height: 40rpx;
     vertical-align: middle;
   }
   
@@ -103,10 +106,20 @@ page {
     border-radius: 8rpx;
     text-align: center;
     margin-right: 20rpx;
+    background-color: #ffffff;
   }
+  .count-buttons {
+    display: flex;
+    flex-direction: column;
+    border-left: none;
+    border-radius: 0 8rpx 8rpx 0;
+    padding: 5rpx;
+    gap: 10rpx;
+  }
+
   .count-buttons image {
     width: 40rpx;
-    height: 40rpx;
+    height: 30rpx;
     display: block;
     margin: 5rpx 0;
   }
