@@ -26,8 +26,32 @@ Page({
         // 接收前一页传递的id（如：pages/roomDetail/roomDetail?id=123）
         this.setData({ id: options.id }, () => {
           this.getRoomData(); // 回调中请求数据，确保id已赋值
+        // 设置默认日期为当天
+        this.setDefaultDate();
         });
       },
+
+     // 页面显示时也更新日期（确保从后台返回时日期正确）
+     onShow() {
+        this.setDefaultDate();
+      },
+      
+      // 设置默认日期为当天
+      setDefaultDate() {
+        const today = new Date();
+        const year = today.getFullYear();
+        // 月份从0开始，需要+1，并且确保两位数
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        // 日期确保两位数
+        const day = String(today.getDate()).padStart(2, '0');
+        // 格式化为YYYY-MM-DD，符合小程序date picker要求
+        const formattedDate = `${year}-${month}-${day}`;
+        
+        this.setData({
+          selectedDate: formattedDate
+        });
+      },
+      
     
     // 根据id请求排练室数据
     getRoomData() {

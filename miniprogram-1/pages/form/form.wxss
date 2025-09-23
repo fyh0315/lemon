@@ -5,6 +5,14 @@ page {
     font-size: 32rpx;
   }
   
+  .page-content {
+    /* 底部间距 = 底部栏高度（80rpx） + 底部栏上下内边距（30rpx*2）= 140rpx */
+    /* 确保内容不会被固定底部栏遮挡 */
+    padding-bottom: 140rpx;
+    /* 禁止横向溢出（小屏机型避免内容超出屏幕宽度） */
+    overflow-x: hidden;
+  }
+
   /* 顶部区域 */
   .page-header {
     display: flex;
@@ -33,6 +41,7 @@ page {
     padding: 30rpx;
     background-color: #e6f7ed; /* 浅绿色背景 */
     border-radius: 16rpx;
+    overflow: visible;
   }
   .label {
     display: block;
