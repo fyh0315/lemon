@@ -82,7 +82,7 @@
 <view class="footer-bar">
   <view class="total-price">
     <view class="label">合计：</view>
-    <view class="price">¥ 120</view>
+    <view class="price">{{price}}</view>
   </view>
   <button class="submit-btn" bindtap="handleSubmit">提交订单</button>
 </view>

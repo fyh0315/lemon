@@ -6,7 +6,8 @@
     "pages/mine/mine",
     "pages/rehearsal/rehearsal",
     "pages/rhs_detail/rhs_detail",
-    "pages/form/form"
+    "pages/form/form",
+    "pages/result/result"
     
   ],
   "window": {
