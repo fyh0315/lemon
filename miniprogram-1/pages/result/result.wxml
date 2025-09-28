@@ -1,2 +1,16 @@
 <!--pages/result/result.wxml-->
-<text>pages/result/result.wxml</text>
+<view class="container">
+
+  <!-- 成功提示区域 -->
+  <view class="success-area">
+    <image class="success-icon" src="https://lemon-shanghai.oss-cn-shanghai.aliyuncs.com/book/success.PNG"></image>
+    <view class="success-text">预约成功</view>
+    <view class="tip-text">您可以在 “订单” 页面查看订单详情</view>
+  </view>
+
+  <!-- 底部按钮组 -->
+  <view class="button-group">
+    <button class="btn again" bindtap="onAgainTap">再来一单</button>
+    <button class="btn confirm" bindtap="onConfirmTap">我知道啦</button>
+  </view>
+</view>

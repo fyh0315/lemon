@@ -1,1 +1,74 @@
-/* pages/result/result.wxss */
+/* 页面整体容器：垂直居中布局 */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20rpx;
+    box-sizing: border-box;
+    height: 100vh;
+    justify-content: center;
+  }
+  
+  /* 顶部标题 */
+  .title {
+    font-size: 36rpx;
+    font-weight: bold;
+    margin-bottom: 100rpx;
+  }
+  
+  /* 成功提示区域：图标、文字垂直排列 */
+  .success-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80rpx;
+  }
+  
+  .success-icon {
+    width: 120rpx;
+    height: 120rpx;
+    margin-bottom: 20rpx;
+  }
+  
+  .success-text {
+    font-size: 32rpx;
+    margin-bottom: 40rpx;
+  }
+  
+  .tip-text {
+    font-size: 28rpx;
+    color: #999;
+  }
+  
+  /* 按钮组：水平分布两个按钮 */
+  .button-group {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0 40rpx;
+    box-sizing: border-box;
+  }
+  
+  /* 按钮通用样式 */
+  .btn {
+    width: 240rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    border-radius: 40rpx;
+    font-size: 28rpx;
+  }
+  
+  /* “再来一单” 按钮：边框型 */
+  .again {
+    border: 2rpx solid #07c160;
+    color: #07c160;
+    background-color: #fff;
+  }
+  
+  /* “我知道啦” 按钮：填充型 */
+  .confirm {
+    background-color: #07c160;
+    color: #fff;
+    border: none;
+  }

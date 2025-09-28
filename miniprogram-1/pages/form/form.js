@@ -25,7 +25,7 @@ Page({
     onLoad(options) {
         // 接收前一页传递的id（如：pages/roomDetail/roomDetail?id=123）
         this.setData({ id: options.id }, () => {
-          this.getRoomData(); // 回调中请求数据，确保id已赋值
+        this.getRoomData(); // 回调中请求数据，确保id已赋值
         // 设置默认日期为当天
         this.setDefaultDate();
         this.calculatePrice();
@@ -245,7 +245,7 @@ Page({
     });
 
     wx.navigateTo({ 
-        url: `/pages/result/result` 
+        url: `/pages/result/result?id=${this.data.id}` 
       });
   }
 
