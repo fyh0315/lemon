@@ -1,2 +1,55 @@
-<!--pages/orders/orders.wxml-->
-<text>pages/orders/orders.wxml</text>
+<view class="container">
+
+  <!-- 搜索框 -->
+  <view class="search-box">
+    <icon class="search-icon" type="search" size="15" color="#999"></icon>
+    <input type="text" placeholder="搜索" class="search-input" />
+  </view>
+
+  <!-- 订单列表 -->
+  <view class="order-list">
+    <block >
+    <!--1 wx:for="{{orderList}}" wx:key="id" -->
+      <view class="order-item">
+        <!-- 订单信息（图片+文字） -->
+        <view class="order-info">
+          <image 
+            src="{{item.image || '/images/default.png'}}" 
+            class="order-image" 
+          />
+        
+          <view class="order-detail">
+            <view class="order-header">
+                <view class="order-name" bindtap="toRhs_detail" data-rhs-id="{{item.rhsId}}">排练室AAA</view>
+                <!--2 {{item.name}} -->
+                <view class="order-status ">进行中</view>
+                <!--3 {{item.status}} -->
+            </view>
+            <view class="order-date">2025/10/1 （星期三）</view>
+            <!--4 {{item.date}} ({{item.weekday}}) -->
+            <view class="order-time">10:00 - 12:00</view>
+            <!--5 {{item.time}} -->
+          </view>
+        </view>
+
+        <!-- 操作按钮 -->
+        <view class="order-buttons">
+          <button class="btn refund" 
+           bindtap="handleRefund"
+           data-orderId="{{item.id}}"
+          >
+            退款
+          </button>
+          <button 
+            class="btn repeat" 
+            bindtap="handleRepeat"
+            data-rhs-id="{{item.rhsId}}"
+          >
+          <!--6 wx:if="{{item.showRefund}}" -->
+            再来一单
+          </button>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

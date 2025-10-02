@@ -228,7 +228,7 @@ Page({
           // 跳转到订单成功页（可携带订单ID，方便后续查看详情）
           setTimeout(() => {
             wx.navigateTo({ 
-              url: `/pages/result/result?orderId=${res.data.data.orderId}` 
+              url: `/pages/result/result?id=${this.data.id}` 
             });
           }, 1500);
         } else {
