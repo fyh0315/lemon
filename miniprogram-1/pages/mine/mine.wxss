@@ -1,1 +1,122 @@
-/* pages/mine/mine.wxss */
+/* 顶部栏 */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 88rpx;
+    padding: 0 32rpx;
+    background-color: #fff;
+    border-bottom: 1rpx solid #eaeaea;
+  }
+  
+  .title {
+    font-size: 36rpx;
+    font-weight: 600;
+  }
+  
+  .top-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .dots {
+    font-size: 40rpx;
+    margin-right: 32rpx;
+  }
+  
+  .circle-icon {
+    width: 48rpx;
+    height: 48rpx;
+  }
+  
+  /* 用户信息 */
+  .user-info {
+    display: flex;
+    align-items: center;
+    padding: 32rpx;
+    background-color: #fff;
+    border-bottom: 1rpx solid #eaeaea;
+  }
+  
+  .avatar {
+    width: 128rpx;
+    height: 128rpx;
+    border-radius: 50%;
+    background-color: #c9c9c9; /* 占位头像颜色 */
+    margin-right: 24rpx;
+  }
+  
+  .user-name-level {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-name {
+    font-size: 32rpx;
+    font-weight: 500;
+    margin-right: 12rpx;
+  }
+  
+  .level {
+    font-size: 24rpx;
+    color: #888;
+    border: 1rpx solid #888;
+    border-radius: 16rpx;
+    padding: 2rpx 12rpx;
+  }
+  
+  .menu-icon {
+    width: 36rpx;
+    height: 36rpx;
+    margin-left: auto;
+  }
+  
+  /* 功能按钮 */
+  .func-buttons {
+    display: flex;
+    justify-content: space-around;
+    padding: 32rpx;
+    background-color: #fff;
+    border: 1rpx solid #adadad;
+    border-radius: 16rpx;
+    margin: 24rpx 32rpx;
+  }
+  
+  .func-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .func-icon {
+    width: 64rpx;
+    height: 64rpx;
+    margin-bottom: 12rpx;
+  }
+  
+  .func-text {
+    font-size: 28rpx;
+    color: #333;
+  }
+  
+  /* 列表项 */
+  .list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32rpx;
+    background-color: #fff;
+    border-bottom: 1rpx solid #e2e2e2;
+    margin: 0 32rpx;
+  }
+  
+  .list-text {
+    font-size: 28rpx;
+    color: #333;
+  }
+  
+  .arrow-icon {
+    width: 28rpx;
+    height: 44rpx;
+    color: #999;
+  }

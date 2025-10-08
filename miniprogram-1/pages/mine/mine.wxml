@@ -1,2 +1,35 @@
-<!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<!-- 用户信息区域 -->
+<view class="user-info">
+  <image src="/images/avatar.png" class="avatar" />
+  <view class="user-name-level">
+    <text class="user-name">{{userName}}</text>
+    <text class="level">lv.{{level}}</text>
+  </view>
+  <image src="/images/menu.png" class="menu-icon" />
+</view>
+
+<!-- 功能按钮区域 -->
+<view class="func-buttons">
+  <view class="func-item" bindtap="toCollect">
+    <image src="https://lemon-shanghai.oss-cn-shanghai.aliyuncs.com/mine/collection.PNG" class="func-icon" />
+    <text class="func-text">收藏排练室</text>
+  </view>
+  <view class="func-item" bindtap="toCoupon">
+    <image src="https://lemon-shanghai.oss-cn-shanghai.aliyuncs.com/mine/coupon.PNG" class="func-icon" />
+    <text class="func-text">优惠券</text>
+  </view>
+  <view class="func-item" bindtap="toMember">
+    <image src="https://lemon-shanghai.oss-cn-shanghai.aliyuncs.com/mine/person.PNG" class="func-icon" />
+    <text class="func-text">会员注册</text>
+  </view>
+</view>
+
+<!-- 列表项（设置、帮助） -->
+<view class="list-item" bindtap="toDefault">
+  <text class="list-text">设置默认信息</text>
+  <image src="/images/arrow.png" class="arrow-icon" />
+</view>
+<view class="list-item" bindtap="toHelp">
+  <text class="list-text">帮助与反馈</text>
+  <image src="/images/arrow.png" class="arrow-icon" />
+</view>
