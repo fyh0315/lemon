@@ -4,9 +4,36 @@ Page({
       level: 20 // 用户等级（可从接口获取）
     },
   
-    onLoad() {
-      // 页面加载时的初始化逻辑（如请求用户信息）
-    },
+    onLoad: function () {
+        this.getUser();
+      },
+    
+      // 从后端接口获取订单列表
+      getUser: function () {
+        wx.request({
+          url: 'https://your-backend-api.com/orders', // 替换为实际后端接口地址
+          method: 'GET',
+          success: (res) => {
+            if (res.data.code === 1) {
+              this.setData({
+                userName: userName,
+                level: level
+              });
+            } else {
+              wx.showToast({
+                title: '获取个人信息失败',
+                icon: 'none'
+              });
+            }
+          },
+          fail: () => {
+            wx.showToast({
+              title: '网络错误，请稍后再试',
+              icon: 'none'
+            });
+          }
+        });
+      },
   
     // 收藏排练室按钮点击事件
     toCollect() {
