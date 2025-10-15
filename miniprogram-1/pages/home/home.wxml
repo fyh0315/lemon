@@ -1,7 +1,7 @@
 <view class="container">
     <image src="https://lemon-shanghai.oss-cn-shanghai.aliyuncs.com/bg.jpg" class="bg-image"></image>
    <!-- 搜索框 -->
-   <view class="search-box">
+   <view class="search-box" bindtap="onTapGoResearch">
     <icon class="search-icon" type="search" size="15" color="#999"></icon>
     <input type="text" placeholder="搜索" class="search-input" />
   </view>

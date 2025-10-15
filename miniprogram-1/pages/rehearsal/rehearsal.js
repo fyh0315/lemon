@@ -15,7 +15,7 @@ Page({
       this.setData({ searchKey: e.detail.value });
     },
   
-    // 发起后端请求（POST + JSON传参）
+    // 发起后端请求
     fetchRehearsalList() {
       wx.request({
         url: 'http://test-cn.your-api-server.com/store/query', // 后续改为后端接口地址

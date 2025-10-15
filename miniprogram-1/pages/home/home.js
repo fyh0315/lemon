@@ -29,5 +29,12 @@ Page({
             console.error("跳转失败：", err); 
           }
         });
+      },
+
+     //跳转至搜索页面   
+      onTapGoResearch() {
+        wx.navigateTo({
+            url: '/pages/research/research', 
+          });
       }
   })
