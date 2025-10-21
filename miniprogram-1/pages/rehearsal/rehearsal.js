@@ -19,7 +19,8 @@ Page({
     fetchRehearsalList() {
       wx.request({
         url: 'http://test-cn.your-api-server.com/store/query', // 后续改为后端接口地址
-        method: 'POST',
+        method: 'GET',
+        // 这个接口为什么后端是POST
         header: { 'Content-Type': 'application/json' }, // 声明JSON格式
         data: ({
           name: this.data.searchKey, // 搜索关键词（可扩展价格、标签等筛选）
@@ -29,7 +30,7 @@ Page({
         success: (res) => {
           console.log('后端返回数据：', res.data); // 调试用，查看实际结构
           if (res.data.code === 1) { // 后端code=1为成功
-            // 假设后端数据在 res.data.data.stores，且每条含imageUrl
+            // 后端数据在 res.data.data.stores
             this.setData({
               rehearsalList: res.data.data.stores
             });

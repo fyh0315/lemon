@@ -1,4 +1,5 @@
 Page({
+
     onLoad: function(){
         setTimeout(() => {
             // 检查是否登录
@@ -21,13 +22,15 @@ Page({
                           },
                           success: (res) => {
                             if (res.data.code === 1) {
-
-                            // 登录成功：保存登陆状态
-                            const { token, id} = res.data.data; 
-                              wx.setStorageSync('token', token);
-                              wx.setStorageSync('isLogin', true);
-                              wx.setStorageSync('userId', id); 
-
+                                const backendData = res.data.data;
+                                const token = backendData.token;
+                                const userId = backendData.id; 
+                                const openid = backendData.openid;
+                                // 登录成功：保存登陆状态
+                                wx.setStorageSync('token', token);
+                                wx.setStorageSync('isLogin', true);
+                                wx.setStorageSync('userId', userId); 
+                                wx.setStorageSync('openid', openid);
                               // 提示并跳转首页
                               wx.showToast({ title: '登录成功' });
                               wx.switchTab({ url: '/pages/home/home' });

@@ -7,7 +7,53 @@
 
 <!-- 排练室列表 暂时写死调样式 内容待调整-->
 <view class="room-list">
-    <block >
+    <block wx:for="{{rehearsalList}}" wx:key="id">
+        <view class="room-item">
+        <!-- 左侧图片 -->
+        <image 
+        class="room-img" 
+        src="{{item.imageUrl}}" 
+        mode="aspectFill" 
+        > </image>
+        
+        <view class="room-content">
+        <!-- 标题行 -->
+        <view class="title-row">
+            <text class="title">{{item.name}}</text>
+            <text class="time">{{item.openTime}}-{{item.closeTime}}</text>
+        </view>
+        
+        <!-- 中间文字内容容器 -->
+        <view class="room-text-content">
+            <text class="desc">{{item.description}}</text>
+            <view class="tags-row">
+                <view class="tag" 
+                wx:for="{{item.tags}}" 
+                wx:for-item="tag" 
+                wx:key="*this">
+                {{tag}}
+                </view>
+            </view>
+
+            <view class="price-row">
+                <text class="original-price" wx:if="{{item.isDiscount}}">
+                ¥{{item.originalPrice}}/h
+                </text>
+                <text class="discount-price">¥{{item.discountPrice}}/h</text>
+            </view>
+        </view>
+
+        </view>
+
+    <!-- 右侧预订按钮 -->
+    <button class="book-btn" bindtap="handleBook" data-id="{{item.id}}">
+      预订
+    </button>
+  </view>
+</block>
+
+<!-- 调试用 后续删 -->
+<block >
     <!--1 需要补充到上面 wx:for="{{rehearsalList}}" wx:key="id" -->
         <view class="room-item">
         <!-- 左侧图片 -->
@@ -26,7 +72,7 @@
             <!--3 {{item.openTime}}-{{item.closeTime}} -->
         </view>
         
-        <!-- 中间文字内容容器 -->
+        <!-- 中间文字容器 -->
         <view class="room-text-content">
             <text class="desc">一家很酸的排练室</text>
             <!--4 {{item.description}} -->
@@ -54,4 +100,5 @@
     </button>
   </view>
 </block>
+
 </view>
