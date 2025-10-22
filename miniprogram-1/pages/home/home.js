@@ -55,7 +55,7 @@ Page({
         }
         else{
             wx.request({
-                url: 'http://test-cn.your-api-server.com/store/query', // 后续改为后端接口地址
+                url: `https://api.example.com/users/${openid}`, 
                 method: 'GET',
                 header: {
                     'Authorization': `Bearer ${openid}`,

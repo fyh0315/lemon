@@ -1,8 +1,17 @@
 // pages/rehearsal/list.js
 Page({
     data: {
-      rehearsalList: [], // 存储后端返回的列表
-      searchKey: ''      // 搜索关键词
+        rehearsalList: [], // 存储后端返回的列表
+        total: 0, // 总记录数（用于分页）
+        pageNum: 1, // 当前页码（默认1，与接口一致）
+        pageSize: 10, // 每页条数（默认10，与接口一致）
+
+        filterParams: {
+        name: "", 
+        minPrice: "",
+        maxPrice: "", 
+        tags: "" 
+        }
     },
   
     // 页面加载时请求数据
@@ -19,17 +28,15 @@ Page({
     fetchRehearsalList() {
       wx.request({
         url: 'http://test-cn.your-api-server.com/store/query', // 后续改为后端接口地址
-        method: 'GET',
-        // 这个接口为什么后端是POST
-        header: { 'Content-Type': 'application/json' }, // 声明JSON格式
+        method: 'POST',
+        // data部分
         data: ({
-          name: this.data.searchKey, // 搜索关键词（可扩展价格、标签等筛选）
-          pageNum: 1,
-          pageSize: 10
+            pageNum,
+            pageSize
         }),
         success: (res) => {
-          console.log('后端返回数据：', res.data); // 调试用，查看实际结构
-          if (res.data.code === 1) { // 后端code=1为成功
+          console.log('后端返回数据：', res.data); 
+          if (res.data.code === 1) { // code=1为成功
             // 后端数据在 res.data.data.stores
             this.setData({
               rehearsalList: res.data.data.stores
@@ -45,6 +52,25 @@ Page({
       });
     },
   
+    // 上拉加载更多。。这部分没做
+    onReachBottom() {
+        const { pageNum, totalPages } = this.data;
+        // 判断是否还有下一页
+        if (pageNum < totalPages) {
+          this.setData({
+            pageNum: pageNum + 1 // 页码+1
+          }, () => {
+            this.fetchRehearsalList(); // 加载下一页数据（需修改fetchRehearsalList，合并旧数据）
+          });
+        } else {
+          wx.showToast({
+            title: "已加载全部排练室",
+            icon: "none",
+            duration: 1500
+          });
+        }
+    },
+
      // 预订按钮点击事件
     handleBook(e) {
     // 获取当前排练室的id（从data-id中获取）
