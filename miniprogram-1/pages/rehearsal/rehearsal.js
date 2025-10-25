@@ -72,14 +72,37 @@ Page({
     },
 
      // 预订按钮点击事件
+    // 预订按钮点击事件
     handleBook(e) {
-    // 获取当前排练室的id（从data-id中获取）
-    const roomId = e.currentTarget.dataset.id;
-    
-    // 跳转到详情页（假设详情页路径为 pages/rehearsal/detail）
-    wx.navigateTo({
-      url: `/pages/rhs_detail/rhs_detail?id=${roomId}`, 
-    // 携带id参数到详情页
+        // 获取当前排练室的参数（从data-*中获取）
+        const { 
+            id: roomId, 
+            name, 
+            imageUrl, 
+            description, 
+            pricePerHour, 
+            openTime, 
+            closeTime, 
+            tags, 
+            address, 
+            phone, 
+            status 
+        } = e.currentTarget.dataset; // 简化获取方式（解构赋值）
+  
+        // 跳转到详情页，正确拼接参数（无空格、用&分隔，特殊字符编码）
+        wx.navigateTo({
+            url: `/pages/rhs_detail/rhs_detail?` +
+            `id=${encodeURIComponent(roomId)}&` +
+            `name=${encodeURIComponent(name)}&` +
+            `imageUrl=${encodeURIComponent(imageUrl)}&` +
+            `description=${encodeURIComponent(description)}&` +
+            `pricePerHour=${encodeURIComponent(pricePerHour)}&` +
+            `openTime=${encodeURIComponent(openTime)}&` +
+            `closeTime=${encodeURIComponent(closeTime)}&` +
+            `tags=${encodeURIComponent(tags)}&` +
+            `address=${encodeURIComponent(address)}&` +
+            `phone=${encodeURIComponent(phone)}&` +
+            `status=${encodeURIComponent(status)}`
     });
-  },
+  }
   });

@@ -1,6 +1,7 @@
 Page({
     data: {
       id: '',         // 接收的排练室ID
+      name: "",
       slides: [],     // 幻灯片数据,此处待修改
       imageUrl : "",
       description: '',
@@ -10,50 +11,28 @@ Page({
       tags : "",
       address : "",
       phone : "",
+      status : 0,
       devices :[],
       discount:[],
     },
   
     // 页面加载时接收参数并请求数据
     onLoad(options) {
-      // 接收前一页传递的id（如：pages/roomDetail/roomDetail?id=123）
-      this.setData({ id: options.id }, () => {
-        this.getRoomData(); // 回调中请求数据，确保id已赋值
-      });
-    },
-  
-    // 根据id请求排练室数据
-    getRoomData() {
-      wx.request({
-        url: 'https://your-api.com/room/${this.data.id}', 
-        // 后端接口（需替换为实际地址）
-        method: 'GET',
-        success: (res) => {
-          if (res.data.code === 200) { // 假设后端返回code=200为成功
-            const data = res.data.data;
-            this.setData({
-              slides: data.slides,      
-              imageUrl: data.imageUrl,
-              // 轮播图数据（数组，含title等字段）
-              name: data.name,
-              description: data.description,
-              pricePerHour: data.pricePerHour,
-              openTime: data.openTime,
-              closeTime: data.closeTime,
-              tags: data.tags,
-              address: data.address,
-              phone: data.phone,
-              devices: data.devices,
-              discount: data.discount,
-            });
-          }
-        },
-        fail: (err) => {
-          console.error('获取排练室数据失败', err);
-          wx.showToast({ title: '数据加载失败', icon: 'none' });
-        }
-      });
-    },
+        // 把 options 里的每个参数解码后，直接赋值给 data 对应字段
+        this.setData({
+          id: decodeURIComponent(options.id || ""),
+          name: decodeURIComponent(options.name || ""),
+          imageUrl: decodeURIComponent(options.imageUrl || ""),
+          description: decodeURIComponent(options.description || ""),
+          pricePerHour: decodeURIComponent(options.pricePerHour || 0),
+          openTime: decodeURIComponent(options.openTime || ""),
+          closeTime: decodeURIComponent(options.closeTime || ""),
+          tags: decodeURIComponent(options.tags || ""),
+          address: decodeURIComponent(options.address || ""),
+          phone: decodeURIComponent(options.phone || ""),
+          status: decodeURIComponent(options.status || 0)
+        });
+      },
   
     // 跳转地图（根据地址打开地图）
     toMap() {
