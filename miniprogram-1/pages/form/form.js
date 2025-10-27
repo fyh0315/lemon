@@ -1,9 +1,8 @@
 Page({
     data: {
-        // 排练室信息
         id: '',       
-        imageUrl : "",  //排练室图片
-        pricePerHour: 100,
+        imageUrl : "", 
+        pricePerHour: 0,
         openTime : "",
         closeTime : "",
         // 预约日期
@@ -19,64 +18,44 @@ Page({
         discount:[],
         // 价格
         price: 0,
+
+        lastValidDate: '', // 上一次有效的可预约日期（用于回滚）
+        bookableDates: [],// 可预约日期
       },
   
       // 页面加载时接收参数并请求数据
     onLoad(options) {
-        // 接收前一页传递的id（如：pages/roomDetail/roomDetail?id=123）
-        this.setData({ id: options.id }, () => {
-        this.getRoomData(); // 回调中请求数据，确保id已赋值
-        // 设置默认日期为当天
-        this.setDefaultDate();
-        this.calculatePrice();
+        this.setData({ id: options.id}, () => {
+            this.getRoomData();
         });
       },
 
      // 页面显示时也更新日期（确保从后台返回时日期正确）
      onShow() {
-        this.setDefaultDate();
-        this.calculatePrice();
+        this.getRoomData();
       },
       
-      // 设置默认日期为当天
-      setDefaultDate() {
-        const today = new Date();
-        const year = today.getFullYear();
-        // 月份从0开始，需要+1，并且确保两位数
-        const month = String(today.getMonth() + 1).padStart(2, '0');
-        // 日期确保两位数
-        const day = String(today.getDate()).padStart(2, '0');
-        // 格式化为YYYY-MM-DD，符合小程序date picker要求
-        const formattedDate = `${year}-${month}-${day}`;
-        
-        this.setData({
-          selectedDate: formattedDate
-        });
-      },
-      
-    
-    // 根据id请求排练室数据
-    getRoomData() {
+      getRoomData() {
         wx.request({
-          url: 'https://your-api.com/roomdetail?roomid=id', 
-          // 后端接口（需替换为实际地址）
+          url: `https://your-api.com/roomdetail?roomid=${this.data.id}`, // 修复：原id未拼接，这里要加${}
           method: 'GET',
           success: (res) => {
-            if (res.data.code === 200) { // 假设后端返回code=200为成功
-              const data = res.data.data;
-              this.setData({    
-                imageUrl: data.imageUrl,
-                name: data.name,
-                // description: data.description,
-                pricePerHour: data.pricePerHour,
-                openTime: data.openTime,
-                closeTime: data.closeTime,
-                // tags: data.tags,
-                // address: data.address,
-                // phone: data.phone,
-                // devices: data.devices,
-                discount: data.discount,
-              });
+            if (res.data.code === 200) { 
+                // 取出后端返回的可预约日期列表
+                const bookableDates = res.data.data;
+                this.setData({    
+                    bookableDates: bookableDates, // 存储可预约日期
+                    lastValidDate: bookableDates[0] || '' // 初始lastValidDate为首个可预约日期
+                }, () => {
+                    // 2. 确保bookableDates获取后，再设置默认日期（关键：解决异步顺序问题）
+                    this.setDefaultDate();
+                    this.calculatePrice();
+                });
+      
+                // 3. 边界处理：若暂无可预约日期，提前提示
+                if (bookableDates.length === 0) {
+                    wx.showToast({ title: '暂无可预约日期', icon: 'none', duration: 2000 });
+                }
             }
           },
           fail: (err) => {
@@ -86,11 +65,71 @@ Page({
         });
       },
 
-    handleDateChange(e) {
+      // 设置默认日期为当天或第一个可预约日期
+      setDefaultDate() {
+        const { bookableDates } = this.data;
+        if (bookableDates.length === 0) return; // 无可用日期，直接返回
+      
+        // 1. 获取当天的 "YYYY-MM-DD" 格式
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        const todayStr = `${year}-${month}-${day}`;
+      
+        // 2. 若当天可预约，默认用当天；否则用第一个可预约日期
+        let defaultDate = bookableDates.includes(todayStr) ? todayStr : bookableDates[0];
+      
         this.setData({
-          selectedDate: e.detail.value
+          selectedDate: defaultDate,
+          lastValidDate: defaultDate // 同步更新lastValidDate
         });
-    },
+      },
+
+    //判断是否为可预约日期
+      isDateBookable(date) {
+        const { bookableDates } = this.data;
+        if (bookableDates.length === 0) return true; // 无可用日期时，全部禁用
+      
+        // 1. 把日期对象转换成 "YYYY-MM-DD" 格式（和后端可预约日期格式对齐）
+        const year = date.year;
+        const month = String(date.month).padStart(2, '0'); // 补0（如10月→10，9月→09）
+        const day = String(date.day).padStart(2, '0');
+        const currentDateStr = `${year}-${month}-${day}`;
+      
+        // 2. 检查当前日期是否在可预约列表中：不在则禁用（返回true）
+        return !bookableDates.includes(currentDateStr);
+      },
+
+    // handleDateChange(e) {
+    //     this.setData({
+    //       selectedDate: e.detail.value
+    //     });
+    // },
+
+    handleDateChange(e) {
+        const selectedDate = e.detail.value; // 用户新选的日期
+        const { bookableDates, lastValidDate } = this.data;
+      
+        // 1. 校验：新选的日期是否在可预约列表中
+        if (bookableDates.includes(selectedDate)) {
+          // 可预约：更新选中日期和lastValidDate
+          this.setData({
+            selectedDate: selectedDate,
+            lastValidDate: selectedDate // 记录当前有效日期，用于后续回滚
+          });
+        } else {
+          // 不可预约：弹提示+回滚到上一次有效日期
+          wx.showToast({ 
+            title: '该日期不可预约，请选择其他日期', 
+            icon: 'none', 
+            duration: 1500 
+          });
+          this.setData({
+            selectedDate: lastValidDate // 回滚
+          });
+        }
+      },
 
     calculatePrice() {
         const { endHour, startHour, pricePerHour } = this.data;

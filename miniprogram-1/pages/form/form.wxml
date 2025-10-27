@@ -3,15 +3,16 @@
 
 <!-- 顶部：排练室名称与头像 -->
 <view class="page-header">
-  <image src="/images/room-avatar.png" class="room-avatar" />
-  <text class="room-name">排练室AAA</text>
+  <image src="{{imageUrl}}" class="room-avatar" />
+  <text class="room-name">{{name || '排练室'}}</text>
 </view>
 
 <view class="page-medium">
 <!-- 日期选择模块 -->
 <view class="form-section">
   <view class="label">日期</view>
-  <picker mode="date" value="{{selectedDate}}" start="2025-09-05" end="2025-12-31" bindchange="handleDateChange">
+  <!-- start待修改 -->
+  <picker mode="date" value="{{selectedDate}}" start="2025-09-05" end="2025-12-31" bindchange="handleDateChange" disabled-date="{{isDateBookable}}>
     <view class="date-picker">
       <input type="text" placeholder="点击选择日期" value="{{selectedDate}}" disabled />
       <image src="https://lemon-shanghai.oss-cn-shanghai.aliyuncs.com/calendar.png" class="calendar-icon" />
