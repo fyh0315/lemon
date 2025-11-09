@@ -12,7 +12,7 @@
 <view class="form-section">
   <view class="label">日期</view>
   <!-- start待修改 -->
-  <picker mode="date" value="{{selectedDate}}" start="2025-09-05" end="2025-12-31" bindchange="handleDateChange" disabled-date="{{isDateBookable}}>
+  <picker mode="date" value="{{selectedDate}}" start="2025-09-05" end="2025-12-31" bindchange="handleDateChange" disabled-date="{{isDateBookable}}">
     <view class="date-picker">
       <input type="text" placeholder="点击选择日期" value="{{selectedDate}}" disabled />
       <image src="https://lemon-shanghai.oss-cn-shanghai.aliyuncs.com/calendar.png" class="calendar-icon" />
@@ -26,12 +26,12 @@
   <view class="time-range">
     <!-- 开始时间选择器 -->
     <picker 
-      mode="time" 
-      value="{{startTime}}" 
-      start="09:00" 
-      end="22:00" 
-      bindchange="handleStartTimeChange">
-      <view class="time-picker">
+        mode="time" 
+        value="{{startTime}}" 
+        start="{{rslStartTime}}"
+        end="{{rslEndTime}}" 
+        bindchange="handleStartTimeChange">
+        <view class="time-picker">
         <text>{{startTime}}</text>
         <image src="/images/calendar-icon.png" class="calendar-icon" />
       </view>

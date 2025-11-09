@@ -72,7 +72,7 @@ Page({
     // 立即预订
     bookNow() {
       wx.navigateTo({
-        url: '/pages/form/form?id=${this.data.id}`', // 跳转到预订页并传数据
+        url: '/pages/form/form?id=${this.data.id}&name=${this.data.name}&imageurl=${this.data.imageurl}`', // 跳转到预订页并传数据
       });
     },
   });

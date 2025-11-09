@@ -1,12 +1,16 @@
 Page({
     data: {
-        id: '',       
+        id: '',
+        name: '',       
         imageUrl : "", 
         pricePerHour: 0,
         openTime : "",
         closeTime : "",
         // 预约日期
         selectedDate: '',
+        // 可预约时间
+        rhsStartTime: '09:00',
+        thsEndTime: '22:00',
         // 排练时间
         startTime: '09:00', // 默认开始时间
         endTime: '10:00',   // 默认结束时间
@@ -23,12 +27,22 @@ Page({
         bookableDates: [],// 可预约日期
       },
   
-      // 页面加载时接收参数并请求数据
+    // 页面加载时接收参数并请求数据
     onLoad(options) {
-        this.setData({ id: options.id}, () => {
+        // 接收参数（id和name直接获取，imageurl需要解码）
+        const id = options.id;
+        const name = options.name;
+        const imageurl = options.imageurl; // 解码url
+        
+        // 后续可将参数存到data中使用
+        this.setData({
+          id,
+          name,
+          imageurl
+        },() => {
             this.getRoomData();
         });
-      },
+    },
 
      // 页面显示时也更新日期（确保从后台返回时日期正确）
      onShow() {
@@ -37,7 +51,7 @@ Page({
       
       getRoomData() {
         wx.request({
-          url: `https://your-api.com/roomdetail?roomid=${this.data.id}`, // 修复：原id未拼接，这里要加${}
+          url: `https://your-api.com/roomdetail?roomid=${this.data.id}`,
           method: 'GET',
           success: (res) => {
             if (res.data.code === 200) { 
@@ -131,13 +145,25 @@ Page({
         }
       },
 
-    calculatePrice() {
-        const { endHour, startHour, pricePerHour } = this.data;
-        const hourDiff = endHour - startHour;
-        this.setData({
-          price: hourDiff > 0 ? hourDiff * pricePerHour : 0
+
+    
+
+    //  获取预约当天可预约时间段
+    getAppointmentSlots(date) {
+        const storeId = id;
+        wx.request({
+            url: `http://test-cn.your-api-server.com/appointment/${storeId}/time-slots?date=${selectedDate}`,
+            method: 'GET',
+            success(res) {
+                const slots = res.data.data; 
+                this.setData({
+                rhsStartTime: slots.startTime,
+                thsEndTime: slots.endTime,
+                });
+            }
         });
-      },
+    },
+
 
     // 开始时间选择事件
     handleStartTimeChange(e) {
@@ -148,7 +174,7 @@ Page({
         startHour: parseInt(hour)
       });
       this.validateTimeRange(); // 验证时间范围
-      this.calculatePrice();
+      this.getPriceFromBackend(); // 请求价格
     },
   
     // 结束时间选择事件
@@ -160,7 +186,7 @@ Page({
         endHour: parseInt(hour)
       });
       this.validateTimeRange(); // 验证时间范围
-      this.calculatePrice();
+      this.getPriceFromBackend();
     },
   
     // 时间范围验证
@@ -209,6 +235,54 @@ Page({
     });
   },
 
+
+  //   价格校验
+  getPriceFromBackend() {
+    const { id: roomId, selectedDate, startTime, endTime } = this.data;
+  
+    // 边界校验：未选日期/时间时，不发请求并提示
+    if (!selectedDate || !startTime || !endTime) {
+      wx.showToast({ title: '请先选择日期和时间', icon: 'none' });
+      this.setData({ price: 0 }); // 重置价格为0
+      return;
+    }
+  
+    // 发送请求到后端价格接口（需替换为你的实际接口地址）
+    wx.request({
+      url: 'https://your-api.com/calculate-price', // 后端计算价格的接口
+      method: 'POST', 
+      data: {
+        roomId: roomId,       // 排练室ID
+        appointmentDate: selectedDate,   // 预约日期（YYYY-MM-DD）
+        startTime: startTime, // 开始时间（HH:MM）
+        endTime: endTime      // 结束时间（HH:MM）
+        // 若后端需要人数计算价格，补充：peopleCount: this.data.peopleCount
+      },
+      header: { 'content-type': 'application/json' },
+      success: (res) => {
+        if (res.data.code === 200 && res.data.data?.price !== undefined) {
+          // 成功：更新显示的价格
+          this.setData({ price: res.data.data.price });
+        } else {
+          // 失败：提示用户并重置价格
+          wx.showToast({ title: res.data.msg || '获取价格失败', icon: 'none' });
+          this.setData({ price: 0 });
+        }
+      },
+      fail: (err) => {
+        console.error('请求后端价格失败：', err);
+        wx.showToast({ title: '网络错误，无法获取价格', icon: 'none' });
+        this.setData({ price: 0 });
+      },
+      complete: () => {
+        // 无论成功失败，都关闭加载提示
+        wx.hideLoading();
+      }
+    });
+  },
+
+
+
   handleSubmit() {
     // 1. 先获取本地存储的用户唯一标识（userId）
     const userId = wx.getStorageSync('userId'); // 从本地缓存读取userId
@@ -249,17 +323,11 @@ Page({
       data: {
         userId: userId,          // 用户唯一标识（核心关联字段）
         roomId: id,              // 排练室ID
-        date: selectedDate,      // 预约日期
-        startTime,               // 开始时间
-        endTime,                 // 结束时间
-        peopleCount,             // 人数
-        totalPrice: price,       // 总价
-        pricePerHour             // 每小时价格（可选）
-      },
-      header: {
-        'content-type': 'application/json',
-        // 若后端需要登录态验证，可添加token（如从缓存读取）
-        'token': wx.getStorageSync('token') 
+        appointmentDate: selectedDate,      // 预约日期
+        startTime: startTime,               // 开始时间
+        endTime: endTime,                 // 结束时间
+        expectedPeople: peopleCount,             // 人数
+        couponId: couponId || null,
       },
       success: (res) => {
         if (res.data.code === 200) {
