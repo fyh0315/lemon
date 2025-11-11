@@ -8,7 +8,8 @@
     "pages/rhs_detail/rhs_detail",
     "pages/form/form",
     "pages/result/result",
-    "pages/research/research"
+    "pages/research/research",
+    "pages/default/default"
     
   ],
   "window": {

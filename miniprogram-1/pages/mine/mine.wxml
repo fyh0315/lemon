@@ -26,7 +26,7 @@
 
 <!-- 列表项（设置、帮助） -->
 <view class="list-item" bindtap="toDefault">
-  <text class="list-text">设置默认信息</text>
+  <text class="list-text">设置个人信息</text>
   <image src="/images/arrow.png" class="arrow-icon" />
 </view>
 <view class="list-item" bindtap="toHelp">

@@ -1,7 +1,8 @@
 Page({
     data: {
       userName: "乐萌萌", // 用户名（可从接口获取）
-      level: 20 // 用户等级（可从接口获取）
+      level: 20, // 用户等级（可从接口获取）
+      avatarUrl: ''
     },
   
     onLoad: function () {
@@ -64,11 +65,7 @@ Page({
   
     // 设置默认信息按钮点击事件
     toDefault() {
-      wx.showToast({
-        title: "设置默认信息（后续可跳转页面）",
-        icon: "none"
-      });
-      // 实际开发：wx.navigateTo({ url: "/pages/default/default" });
+      wx.navigateTo({ url: "/pages/default/default" });
     },
   
     // 帮助与反馈按钮点击事件

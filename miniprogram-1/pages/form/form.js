@@ -322,12 +322,16 @@ Page({
       method: 'POST',
       data: {
         userId: userId,          // 用户唯一标识（核心关联字段）
-        roomId: id,              // 排练室ID
+        storeId: id,              // 排练室ID
         appointmentDate: selectedDate,      // 预约日期
         startTime: startTime,               // 开始时间
         endTime: endTime,                 // 结束时间
         expectedPeople: peopleCount,             // 人数
         couponId: couponId || null,
+        
+        contactPhone: contactPhone || null,
+        contactName: contactName || null,
+        remark: remark || null,
       },
       success: (res) => {
         if (res.data.code === 200) {
